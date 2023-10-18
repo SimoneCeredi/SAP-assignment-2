@@ -1,5 +1,5 @@
 #### Software Architecture and Platforms - a.y. 2023-2024
-(Github repo)[https://github.com/SimoneCeredi/sap-assignments]
+[Github repo](https://github.com/SimoneCeredi/sap-assignments)
 
 ## Assignment #2 - About Requirements
 

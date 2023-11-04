@@ -3,7 +3,7 @@ plugins {
     application
 }
 
-group = "it.unibo.sap"
+group = "it.unibo.sap.assignments"
 version = "1.0-SNAPSHOT"
 
 repositories {

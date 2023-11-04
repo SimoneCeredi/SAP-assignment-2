@@ -11,4 +11,6 @@ interface Ride {
     val user: User
     val EScooter: Escooter
 
+    fun isOngoing(): Boolean
+
 }

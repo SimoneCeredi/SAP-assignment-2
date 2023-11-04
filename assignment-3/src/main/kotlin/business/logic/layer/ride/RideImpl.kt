@@ -10,4 +10,8 @@ class RideImpl(
     override var endDate: Date?,
     override val user: User,
     override val EScooter: Escooter
-) : Ride
+) : Ride {
+    override fun isOngoing(): Boolean {
+        return this.endDate == null
+    }
+}

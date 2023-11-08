@@ -17,8 +17,10 @@ interface EScooter {
 
 class EScooterImpl(
     override val id: String,
-    override var state: EScooter.EScooterState,
-    override var location: Location?
-) : EScooter
+) : EScooter {
 
-fun EScooter(id: String, state: EScooter.EScooterState, location: Location?) = EScooterImpl(id, state, location)
+    override var state: EScooter.EScooterState = EScooter.EScooterState.AVAILABLE
+    override var location: Location? = null
+}
+
+fun EScooter(id: String) = EScooterImpl(id)

@@ -5,12 +5,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a72360dd-80e8-42f3-bab4-8fdf284b191c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sap-assignments.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.2/checksums/checksums.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.2/dependencies-accessors/dependencies-accessors.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.2/dependencies-accessors/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.2/executionHistory/executionHistory.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.2/executionHistory/executionHistory.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.2/fileChanges/last-build.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.2/fileHashes/fileHashes.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.2/fileHashes/fileHashes.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.2/fileHashes/resourceHashesCache.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.2/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/vcs-1/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assignment-3/src/main/kotlin/business/logic/layer/escooter/EScooterImpl.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assignment-3/src/main/kotlin/business/logic/layer/escooter/Escooter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/assignment-3/src/main/kotlin/business/logic/layer/escooter/Escooter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assignment-3/src/main/kotlin/business/logic/layer/location/Location.kt" beforeDir="false" afterPath="$PROJECT_DIR$/assignment-3/src/main/kotlin/business/logic/layer/location/Location.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assignment-3/src/main/kotlin/business/logic/layer/location/LocationImpl.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assignment-3/src/main/kotlin/business/logic/layer/ride/Ride.kt" beforeDir="false" afterPath="$PROJECT_DIR$/assignment-3/src/main/kotlin/business/logic/layer/ride/Ride.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assignment-3/src/main/kotlin/business/logic/layer/ride/RideImpl.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assignment-3/src/main/kotlin/business/logic/layer/user/User.kt" beforeDir="false" afterPath="$PROJECT_DIR$/assignment-3/src/main/kotlin/business/logic/layer/user/User.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assignment-3/src/main/kotlin/business/logic/layer/user/UserImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/assignment-3/src/main/kotlin/business/logic/layer/user/UserImpl.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +52,9 @@
         <task path="$PROJECT_DIR$/assignment-03">
           <activation />
         </task>
+        <task path="$PROJECT_DIR$/assignment-3">
+          <activation />
+        </task>
         <projects_view>
           <tree_state>
             <expand />
@@ -50,7 +71,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
@@ -62,11 +83,11 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "android.gradle.sync.needed": "true",
     "git-widget-placeholder": "assignment-3/develop",
     "jdk.selected.JAVA_MODULE": "temurin-20",
     "last_opened_file_path": "/home/simone/uni-lab/SAP/sap-assignments/assignment-3",
@@ -157,10 +178,22 @@
       <updated>1697638745949</updated>
       <workItem from="1697638747378" duration="1364000" />
       <workItem from="1699090867153" duration="1927000" />
+      <workItem from="1699433557926" duration="3989000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

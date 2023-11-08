@@ -5,3 +5,5 @@ interface User {
     val name: String
     val surname: String
 }
+
+data class UserImpl(override val id: String, override val name: String, override val surname: String) : User {}

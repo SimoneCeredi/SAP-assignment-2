@@ -14,3 +14,15 @@ interface Ride {
     fun isOngoing(): Boolean
 
 }
+
+class RideImpl(
+    override val id: String,
+    override val startDate: Date,
+    override var endDate: Date?,
+    override val user: User,
+    override val EScooter: Escooter
+) : Ride {
+    override fun isOngoing(): Boolean {
+        return this.endDate == null
+    }
+}

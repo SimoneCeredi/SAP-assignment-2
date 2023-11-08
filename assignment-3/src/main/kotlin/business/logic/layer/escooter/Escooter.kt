@@ -14,3 +14,9 @@ interface Escooter {
     var state: EScooterState
     var location: Location?
 }
+
+class EScooterImpl(
+    override val id: String,
+    override var state: Escooter.EScooterState,
+    override var location: Location?
+) : Escooter

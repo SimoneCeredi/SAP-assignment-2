@@ -12,7 +12,7 @@ class UserTest {
 
     @BeforeEach
     fun setUp() {
-        user = UserImpl(id, name, surname)
+        user = User(id, name, surname)
     }
 
     @Test

@@ -34,7 +34,7 @@ class DomainModelImpl : DomainModel {
     }
 
     override fun addNewEscooter(id: String) {
-        escooters += Pair(id, EScooter(id, EScooter.EScooterState.AVAILABLE, null))
+        escooters += Pair(id, EScooter(id))
     }
 
     override fun getEscooter(id: String): EScooter? {

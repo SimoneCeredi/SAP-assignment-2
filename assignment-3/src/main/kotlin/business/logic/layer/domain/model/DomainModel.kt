@@ -14,7 +14,7 @@ interface DomainModel {
     fun startNewRide(user: User, escooter: EScooter): String
     fun getRide(id: String): Ride?
 
-    fun getOngoingRides(): List<Ride>
+    fun getOngoingRides(): Collection<Ride>
 }
 
 class DomainModelImpl : DomainModel {
@@ -23,14 +23,14 @@ class DomainModelImpl : DomainModel {
 
     private var users: Map<String, User> = emptyMap()
     private var escooters: Map<String, EScooter> = emptyMap()
-    private var rides: Map<String, EScooter> = emptyMap()
+    private var rides: Map<String, Ride> = emptyMap()
 
     override fun addNewUser(id: String, name: String, surname: String) {
         users += Pair(id, User(id, name, surname))
     }
 
     override fun getUser(id: String): User? {
-        return users.get(id)
+        return users[id]
     }
 
     override fun addNewEscooter(id: String) {
@@ -38,19 +38,24 @@ class DomainModelImpl : DomainModel {
     }
 
     override fun getEscooter(id: String): EScooter? {
-        return escooters.get(id)
+        return escooters[id]
     }
 
     override fun startNewRide(user: User, escooter: EScooter): String {
-        TODO("not yet implemented")
+        escooter.state = EScooter.EScooterState.IN_USE
+        val rideId = "ride-${rides.size+1}"
+        rides += Pair(rideId, Ride(rideId, user, escooter))
+        return rideId
     }
 
     override fun getRide(id: String): Ride? {
-        TODO("not yet implemented")
+        return rides[id]
     }
 
-    override fun getOngoingRides(): List<Ride> {
-        TODO("not yet implemented")
+    override fun getOngoingRides(): Collection<Ride> {
+        return rides.values
     }
 }
 
+
+fun DomainModel() = DomainModelImpl()

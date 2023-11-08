@@ -17,15 +17,16 @@ interface Ride {
 
 class RideImpl(
     override val id: String,
-    override val startDate: Date,
-    override var endDate: Date?,
     override val user: User,
     override val escooter: EScooter
 ) : Ride {
+
+    override val startDate: Date = Date()
+    override var endDate: Date? = null
     override fun isOngoing(): Boolean {
         return this.endDate == null
     }
 }
 
-fun Ride(id: String, startDate: Date, endDate: Date?, user: User, escooter: EScooter) =
-    RideImpl(id, startDate, endDate, user, escooter)
+fun Ride(id: String,  user: User, escooter: EScooter) =
+    RideImpl(id,  user, escooter)

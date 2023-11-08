@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 
-class UserImplTest {
+class UserTest {
     val id = "abc"
     val name = "Mario"
     val surname = "Rossi"

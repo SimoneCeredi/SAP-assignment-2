@@ -54,7 +54,7 @@ class DomainModelImpl : DomainModel {
 
     override fun getOngoingRides(): Collection<Ride> {
         return rides.values
-    }
+   }
 }
 
 

@@ -28,5 +28,5 @@ class RideImpl(
     }
 }
 
-fun Ride(id: String,  user: User, escooter: EScooter) =
-    RideImpl(id,  user, escooter)
+fun Ride(id: String, user: User, escooter: EScooter) =
+    RideImpl(id, user, escooter)

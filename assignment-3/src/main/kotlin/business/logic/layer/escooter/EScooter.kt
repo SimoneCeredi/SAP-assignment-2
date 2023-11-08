@@ -2,7 +2,7 @@ package business.logic.layer.escooter
 
 import business.logic.layer.location.Location
 
-interface Escooter {
+interface EScooter {
     val id: String
 
     enum class EScooterState {
@@ -17,6 +17,8 @@ interface Escooter {
 
 class EScooterImpl(
     override val id: String,
-    override var state: Escooter.EScooterState,
+    override var state: EScooter.EScooterState,
     override var location: Location?
-) : Escooter
+) : EScooter
+
+fun EScooter(id: String, state: EScooter.EScooterState, location: Location?) = EScooterImpl(id, state, location)

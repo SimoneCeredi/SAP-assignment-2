@@ -6,3 +6,5 @@ interface Location {
 }
 
 data class LocationImpl(override val longitude: Double, override val latitude: Double) : Location
+
+fun Location(longitude: Double, latitude: Double) = LocationImpl(longitude, latitude)

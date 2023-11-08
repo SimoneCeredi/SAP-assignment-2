@@ -7,3 +7,5 @@ interface User {
 }
 
 data class UserImpl(override val id: String, override val name: String, override val surname: String) : User {}
+
+fun User(id: String, name: String, surname: String) = UserImpl(id, name, surname)

@@ -1,8 +1,8 @@
-package sap.escooters.business.logic.layer.domain.model
+package sap.escooters.layers.business.logic.domain.model
 
-import sap.escooters.business.logic.layer.user.User
-import sap.escooters.business.logic.layer.escooter.EScooter
-import sap.escooters.business.logic.layer.ride.Ride
+import sap.escooters.layers.business.logic.user.User
+import sap.escooters.layers.business.logic.escooter.EScooter
+import sap.escooters.layers.business.logic.ride.Ride
 
 interface DomainModel {
     fun addNewUser(id: String, name: String, surname: String): Unit

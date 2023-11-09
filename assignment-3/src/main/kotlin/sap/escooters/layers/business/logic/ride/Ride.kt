@@ -1,7 +1,7 @@
-package sap.escooters.business.logic.layer.ride
+package sap.escooters.layers.business.logic.ride
 
-import sap.escooters.business.logic.layer.escooter.EScooter
-import sap.escooters.business.logic.layer.user.User
+import sap.escooters.layers.business.logic.escooter.EScooter
+import sap.escooters.layers.business.logic.user.User
 import java.util.*
 
 interface Ride {

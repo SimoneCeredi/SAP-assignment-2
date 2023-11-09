@@ -1,4 +1,4 @@
-package sap.escooters.business.logic.layer.user
+package sap.escooters.layers.business.logic.user
 
 interface User {
     val id: String

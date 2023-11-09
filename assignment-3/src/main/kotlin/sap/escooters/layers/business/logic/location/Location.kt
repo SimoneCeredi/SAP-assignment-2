@@ -1,4 +1,4 @@
-package sap.escooters.business.logic.layer.location
+package sap.escooters.layers.business.logic.location
 
 interface Location {
     val longitude: Double

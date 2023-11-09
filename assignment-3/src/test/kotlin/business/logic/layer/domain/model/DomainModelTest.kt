@@ -1,9 +1,9 @@
 package business.logic.layer.domain.model
 
-import sap.escooters.business.logic.layer.escooter.EScooter
-import sap.escooters.business.logic.layer.user.User
+import sap.escooters.layers.business.logic.escooter.EScooter
+import sap.escooters.layers.business.logic.user.User
 import org.junit.jupiter.api.Test
-import sap.escooters.business.logic.layer.domain.model.DomainModel
+import sap.escooters.layers.business.logic.domain.model.DomainModel
 import kotlin.test.assertEquals
 
 class DomainModelTest {

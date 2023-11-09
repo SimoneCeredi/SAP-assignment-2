@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a72360dd-80e8-42f3-bab4-8fdf284b191c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assignment-3/src/main/kotlin/sap/escooters/layers/business/logic/domain/model/DomainModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/assignment-3/src/main/kotlin/sap/escooters/layers/business/logic/domain/model/DomainModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assignment-3/src/test/kotlin/business/logic/layer/domain/model/DomainModelTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/assignment-3/src/test/kotlin/business/logic/layer/domain/model/DomainModelTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assignment-3/src/main/kotlin/sap/escooters/layers/business/logic/escooter/EScooter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/assignment-3/src/main/kotlin/sap/escooters/layers/business/logic/escooter/EScooter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assignment-3/src/main/kotlin/sap/escooters/layers/business/logic/ride/Ride.kt" beforeDir="false" afterPath="$PROJECT_DIR$/assignment-3/src/main/kotlin/sap/escooters/layers/business/logic/ride/Ride.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assignment-3/src/main/kotlin/sap/escooters/layers/business/logic/user/User.kt" beforeDir="false" afterPath="$PROJECT_DIR$/assignment-3/src/main/kotlin/sap/escooters/layers/business/logic/user/User.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -173,7 +173,7 @@
       <workItem from="1697638747378" duration="1364000" />
       <workItem from="1699090867153" duration="1927000" />
       <workItem from="1699433557926" duration="13318000" />
-      <workItem from="1699537790736" duration="9766000" />
+      <workItem from="1699537790736" duration="13186000" />
     </task>
     <servers />
   </component>

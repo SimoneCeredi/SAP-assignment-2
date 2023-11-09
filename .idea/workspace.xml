@@ -5,8 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a72360dd-80e8-42f3-bab4-8fdf284b191c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assignment-3/src/main/kotlin/business/logic/layer/domain/model/DomainModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/assignment-3/src/main/kotlin/business/logic/layer/domain/model/DomainModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assignment-3/src/main/kotlin/business/logic/layer/domain/model/DomainModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/assignment-3/src/main/kotlin/sap/escooters/business/logic/layer/domain/model/DomainModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assignment-3/src/main/kotlin/business/logic/layer/escooter/EScooter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/assignment-3/src/main/kotlin/sap/escooters/business/logic/layer/escooter/EScooter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assignment-3/src/main/kotlin/business/logic/layer/location/Location.kt" beforeDir="false" afterPath="$PROJECT_DIR$/assignment-3/src/main/kotlin/sap/escooters/business/logic/layer/location/Location.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assignment-3/src/main/kotlin/business/logic/layer/ride/Ride.kt" beforeDir="false" afterPath="$PROJECT_DIR$/assignment-3/src/main/kotlin/sap/escooters/business/logic/layer/ride/Ride.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assignment-3/src/main/kotlin/business/logic/layer/user/User.kt" beforeDir="false" afterPath="$PROJECT_DIR$/assignment-3/src/main/kotlin/sap/escooters/business/logic/layer/user/User.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assignment-3/src/test/kotlin/business/logic/layer/domain/model/DomainModelTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/assignment-3/src/test/kotlin/business/logic/layer/domain/model/DomainModelTest.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assignment-3/src/test/kotlin/business/logic/layer/user/UserTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/assignment-3/src/test/kotlin/business/logic/layer/user/UserTest.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -168,7 +172,7 @@
       <updated>1697638745949</updated>
       <workItem from="1697638747378" duration="1364000" />
       <workItem from="1699090867153" duration="1927000" />
-      <workItem from="1699433557926" duration="11308000" />
+      <workItem from="1699433557926" duration="13318000" />
     </task>
     <servers />
   </component>

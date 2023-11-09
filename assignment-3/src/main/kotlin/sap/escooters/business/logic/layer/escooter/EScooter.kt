@@ -1,6 +1,6 @@
-package business.logic.layer.escooter
+package sap.escooters.business.logic.layer.escooter
 
-import business.logic.layer.location.Location
+import sap.escooters.business.logic.layer.location.Location
 
 interface EScooter {
     val id: String

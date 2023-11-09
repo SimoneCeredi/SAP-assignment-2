@@ -3,6 +3,7 @@ package business.logic.layer.user
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
+import sap.escooters.business.logic.layer.user.User
 
 class UserTest {
     val id = "abc"

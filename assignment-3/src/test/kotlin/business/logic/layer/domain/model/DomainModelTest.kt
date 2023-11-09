@@ -30,8 +30,8 @@ class DomainModelTest {
     fun `start new Ride test`() {
         val user = User(userId, userName, userSurname)
         val escooter = EScooter(escooterId)
-        val rideId = domainModel.startNewRide(user, escooter)
-        assertEquals(1, domainModel.getOngoingRides().size)
-        assertEquals(rideId, domainModel.getRide(rideId)?.id)
+        val ride = domainModel.startNewRide(user, escooter)
+       assertEquals(1, domainModel.getOngoingRides().size)
+        assertEquals(ride?.id, domainModel.getRide(ride!!.id)?.id)
     }
 }

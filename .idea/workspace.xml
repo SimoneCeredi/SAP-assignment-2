@@ -6,9 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="a72360dd-80e8-42f3-bab4-8fdf284b191c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assignment-3/src/main/kotlin/sap/escooters/layers/business/logic/escooter/EScooter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/assignment-3/src/main/kotlin/sap/escooters/layers/business/logic/escooter/EScooter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assignment-3/src/main/kotlin/sap/escooters/layers/business/logic/ride/Ride.kt" beforeDir="false" afterPath="$PROJECT_DIR$/assignment-3/src/main/kotlin/sap/escooters/layers/business/logic/ride/Ride.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assignment-3/src/main/kotlin/sap/escooters/layers/business/logic/user/User.kt" beforeDir="false" afterPath="$PROJECT_DIR$/assignment-3/src/main/kotlin/sap/escooters/layers/business/logic/user/User.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +45,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Kotlin Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -71,38 +69,70 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;assignment-3/develop&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;temurin-20&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/simone/uni-lab/SAP/sap-2023-2024&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.editor&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "git-widget-placeholder": "assignment-3/develop",
+    "jdk.selected.JAVA_MODULE": "temurin-20",
+    "last_opened_file_path": "/home/simone/uni-lab/SAP/sap-2023-2024",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.editor",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/assignment-3" />
       <recent name="$PROJECT_DIR$" />
     </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
     <key name="CreateKotlinClassDialog.RecentsKey">
       <recent name="sap.escooters.layers.application" />
     </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="sap.escooters.layers.business.logic.ride" />
+    </key>
   </component>
-  <component name="RunManager" selected="Gradle./home/simone/uni-lab/SAP/sap-assignments/assignment-03 [build]">
+  <component name="RunManager" selected="Gradle.RideTest.toJson">
+    <configuration name="RideTest.toJson" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/assignment-3" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;sap.escooters.layers.business.logic.ride.RideTest.toJson&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
     <configuration name="/home/simone/uni-lab/SAP/sap-assignments/assignment-03 [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -156,6 +186,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.RideTest.toJson" />
         <item itemvalue="Gradle./home/simone/uni-lab/SAP/sap-assignments/assignment-03 [build]" />
         <item itemvalue="Gradle.assignment-03 [run]" />
         <item itemvalue="Kotlin.MainKt" />
@@ -173,7 +204,8 @@
       <workItem from="1697638747378" duration="1364000" />
       <workItem from="1699090867153" duration="1927000" />
       <workItem from="1699433557926" duration="13318000" />
-      <workItem from="1699537790736" duration="13186000" />
+      <workItem from="1699537790736" duration="13243000" />
+      <workItem from="1699630055637" duration="1152000" />
     </task>
     <servers />
   </component>

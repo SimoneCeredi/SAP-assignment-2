@@ -3,6 +3,7 @@ package sap.escooters.layers.business.logic.domain.model
 import sap.escooters.layers.business.logic.escooter.EScooter
 import sap.escooters.layers.business.logic.ride.Ride
 import sap.escooters.layers.business.logic.user.User
+import sap.escooters.layers.infrastructure.data.source.DataSourcePort
 
 interface DomainModel {
     /**
@@ -26,16 +27,18 @@ interface DomainModel {
     fun getOngoingRides(): Collection<Ride>
 }
 
-class DomainModelImpl : DomainModel {
+class DomainModelImpl(val databases: Sequence<DataSourcePort>) : DomainModel {
 
-    // TODO: Add datasourceport
 
     private val users: MutableMap<String, User> = mutableMapOf()
     private val escooters: MutableMap<String, EScooter> = mutableMapOf()
     private val rides: MutableMap<String, Ride> = mutableMapOf()
 
     override fun addNewUser(id: String, name: String, surname: String): User? {
-        return users.reversedPutIfAbsent(id, User(id, name, surname))
+        val user = User(id, name, surname)
+        val res = users.reversedPutIfAbsent(id, user)
+        res?.apply { databases.forEach { it.saveUser(user.toJson()) } }
+        return res
     }
 
     override fun getUser(id: String): User? {
@@ -43,7 +46,10 @@ class DomainModelImpl : DomainModel {
     }
 
     override fun addNewEscooter(id: String): EScooter? {
-        return escooters.reversedPutIfAbsent(id, EScooter(id))
+        val escooter = EScooter(id)
+        val res = escooters.reversedPutIfAbsent(id, escooter)
+        res?.apply { databases.forEach { it.saveEScooter(escooter.toJson()) } }
+        return res
     }
 
     override fun getEscooter(id: String): EScooter? {
@@ -56,7 +62,11 @@ class DomainModelImpl : DomainModel {
         if (getRide(rideId) != null) {
             throw IllegalStateException("Ride already exist")
         }
-        return rides.reversedPutIfAbsent(rideId, Ride(rideId, user, escooter))
+        val ride = Ride(rideId, user, escooter)
+        val res = rides.reversedPutIfAbsent(rideId, ride)
+        res?.apply { databases.forEach { it.saveRide(ride.toJson()) } }
+        return res
+
     }
 
     override fun getRide(id: String): Ride? {
@@ -66,9 +76,10 @@ class DomainModelImpl : DomainModel {
     override fun getOngoingRides(): Collection<Ride> {
         return rides.values
     }
+
 }
 
-fun <K, V>MutableMap<K,V>.reversedPutIfAbsent(key: K, value: V): V? {
+fun <K, V> MutableMap<K, V>.reversedPutIfAbsent(key: K, value: V): V? {
     return if (this.putIfAbsent(key, value) == null) {
         value
     } else {
@@ -76,4 +87,4 @@ fun <K, V>MutableMap<K,V>.reversedPutIfAbsent(key: K, value: V): V? {
     }
 }
 
-fun DomainModel() = DomainModelImpl()
+fun DomainModel(databases: Sequence<DataSourcePort>) = DomainModelImpl(databases)

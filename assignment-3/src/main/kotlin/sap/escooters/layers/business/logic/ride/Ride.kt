@@ -25,6 +25,7 @@ class RideImpl(
     override val startDate: Date = Date()
     override var endDate: Date? = null
     override fun end() {
+        if (endDate != null) throw RideAlreadyEndedException()
         endDate = Date()
     }
 
@@ -36,6 +37,10 @@ class RideImpl(
         return JsonObject().put("id", id).put("userId", user.id).put("escooterId", escooter.id)
             .put("startDate", startDate.toString()).put("endDate", endDate.toString()).putNull("location")
     }
+}
+
+class RideAlreadyEndedException : Throwable() {
+
 }
 
 fun Ride(id: String, user: User, escooter: EScooter) = RideImpl(id, user, escooter)

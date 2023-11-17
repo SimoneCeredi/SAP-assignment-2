@@ -8,6 +8,8 @@ import io.vertx.core.http.HttpMethod
 import io.vertx.core.json.JsonObject
 import io.vertx.ext.web.Router
 import io.vertx.ext.web.RoutingContext
+import io.vertx.ext.web.handler.BodyHandler
+import io.vertx.ext.web.handler.StaticHandler
 import java.util.logging.Level
 import java.util.logging.Logger
 
@@ -34,12 +36,32 @@ class RestServiceVerticleImpl(
         val server = vertx.createHttpServer()
         val router = Router.router(vertx)
 
+        router.route("/static/*").handler(StaticHandler.create().setCachingEnabled(false))
+        router.route().handler(BodyHandler.create())
         router.apply {
+
+
             route(HttpMethod.POST, "/api/users").handler(userHandler::registerNewUser)
             route(HttpMethod.GET, "/api/users/:userId").handler(userHandler::getUser)
             // TODO: Implement other routes
         }
+
+        server.apply {
+            requestHandler(router)
+            listen(port)
+        }
+
+        logger.log(
+            Level.INFO, """Service ready, listening on port $port
+            |Web pages are available at:
+            |${createWebPageLink("user-registration")}
+            |${createWebPageLink("escooter-registration")}
+            |${createWebPageLink("ride-dashboard")}
+        """.trimMargin()
+        )
     }
+
+    private fun createWebPageLink(name: String) = "http://localhost:$port/static/${name}.html"
 
 }
 

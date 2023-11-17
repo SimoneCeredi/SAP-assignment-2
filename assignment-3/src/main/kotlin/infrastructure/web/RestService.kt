@@ -1,8 +1,8 @@
-package infrastructure
+package infrastructure.web
 
-import infrastructure.handlers.EScooterHandler
-import infrastructure.handlers.RideHandler
-import infrastructure.handlers.UserHandler
+import infrastructure.web.handlers.EScooterHandler
+import infrastructure.web.handlers.RideHandler
+import infrastructure.web.handlers.UserHandler
 import io.vertx.core.Vertx
 
 class RestService(

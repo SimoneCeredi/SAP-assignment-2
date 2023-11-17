@@ -1,4 +1,4 @@
-package infrastructure.handlers
+package infrastructure.web.handlers
 
 import application.RideService
 import java.util.logging.Logger

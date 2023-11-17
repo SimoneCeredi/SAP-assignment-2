@@ -1,4 +1,4 @@
-package infrastructure.handlers
+package infrastructure.web.handlers
 
 import application.EScooterService
 import java.util.logging.Logger

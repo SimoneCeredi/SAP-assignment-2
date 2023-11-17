@@ -1,10 +1,10 @@
 import application.EScooterService
 import application.RideService
 import application.UserService
-import infrastructure.RestService
-import infrastructure.handlers.EScooterHandler
-import infrastructure.handlers.RideHandler
-import infrastructure.handlers.UserHandler
+import infrastructure.web.RestService
+import infrastructure.web.handlers.EScooterHandler
+import infrastructure.web.handlers.RideHandler
+import infrastructure.web.handlers.UserHandler
 
 class RestServiceLauncher {
     val port = 8080

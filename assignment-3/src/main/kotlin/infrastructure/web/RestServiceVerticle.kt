@@ -1,11 +1,13 @@
-package infrastructure
+package infrastructure.web
 
-import infrastructure.handlers.EScooterHandler
-import infrastructure.handlers.RideHandler
-import infrastructure.handlers.UserHandler
+import infrastructure.web.handlers.EScooterHandler
+import infrastructure.web.handlers.RideHandler
+import infrastructure.web.handlers.UserHandler
 import io.vertx.core.AbstractVerticle
 import io.vertx.core.http.HttpMethod
+import io.vertx.core.json.JsonObject
 import io.vertx.ext.web.Router
+import io.vertx.ext.web.RoutingContext
 import java.util.logging.Level
 import java.util.logging.Logger
 
@@ -39,6 +41,10 @@ class RestServiceVerticleImpl(
         }
     }
 
+}
+
+fun RoutingContext.sendReply(message: JsonObject): Unit {
+    this.response().putHeader("content/type", "application/json").end(message.toString())
 }
 
 fun RestServiceVerticle(

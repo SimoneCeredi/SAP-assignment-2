@@ -2,6 +2,7 @@ package infrastructure.handlers
 
 import application.UserService
 import io.vertx.ext.web.RoutingContext
+import java.util.logging.Logger
 
 interface UserHandler {
     val userService: UserService
@@ -10,6 +11,7 @@ interface UserHandler {
 }
 
 class UserHandlerImpl(override val userService: UserService) : UserHandler {
+    val logger = Logger.getLogger("[UserHandler]")
     override fun registerNewUser(context: RoutingContext) {
         TODO("Not yet implemented")
     }

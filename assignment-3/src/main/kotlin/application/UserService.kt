@@ -1,6 +1,7 @@
 package application
 
 import domain.User
+import java.util.logging.Logger
 
 interface UserService {
     fun addUser(id: String, name: String, surname: String)
@@ -8,6 +9,7 @@ interface UserService {
 }
 
 class UserServiceImpl : UserService {
+    val logger = Logger.getLogger("[UserService]")
     override fun addUser(id: String, name: String, surname: String) {
         TODO("Not yet implemented")
     }

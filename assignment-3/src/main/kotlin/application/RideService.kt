@@ -1,6 +1,7 @@
 package application
 
 import domain.Ride
+import java.util.logging.Logger
 
 interface RideService {
     fun addRide(userId: String, escooterId: String)
@@ -8,6 +9,8 @@ interface RideService {
 }
 
 class RideServiceImpl : RideService {
+
+    val logger = Logger.getLogger("[RideService]")
     override fun addRide(userId: String, escooterId: String) {
         TODO("Not yet implemented")
     }

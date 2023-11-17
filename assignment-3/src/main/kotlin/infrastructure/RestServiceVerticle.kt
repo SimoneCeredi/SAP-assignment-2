@@ -40,3 +40,10 @@ class RestServiceVerticleImpl(
     }
 
 }
+
+fun RestServiceVerticle(
+    port: Int,
+    userHandler: UserHandler,
+    eScooterHandler: EScooterHandler,
+    rideHandler: RideHandler,
+) = RestServiceVerticleImpl(port, userHandler, eScooterHandler, rideHandler)

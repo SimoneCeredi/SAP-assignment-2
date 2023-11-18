@@ -64,8 +64,8 @@ class RestServiceVerticleImpl(
 
 }
 
-fun RoutingContext.sendReply(message: JsonObject): Unit {
-    this.response().putHeader("content/type", "application/json").end(message.toString())
+fun RoutingContext.sendReply(message: JsonObject) {
+    this.response().putHeader("content-type", "application/json").end(message.toString())
 }
 
 fun RestServiceVerticle(

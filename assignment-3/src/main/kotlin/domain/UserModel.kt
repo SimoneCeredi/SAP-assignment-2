@@ -13,9 +13,7 @@ interface UserModel {
 class UserModelImpl(override val databasePort: UserFileSystemAdapter) :UserModel {
     override fun addNewUser(user: User): Result<User> = databasePort.saveUser(user)
 
-    override fun getUser(id: String): Result<User> {
-        TODO("Not yet implemented")
-    }
+    override fun getUser(id: String): Result<User> = databasePort.getUser(id)
 }
 
 fun UserModel(databasePort: UserFileSystemAdapter) = UserModelImpl(databasePort)

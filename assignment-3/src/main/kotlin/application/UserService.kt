@@ -18,17 +18,21 @@ class UserServiceImpl(override val userModel: UserModel) : UserService {
     override fun registerNewUser(id: String, name: String, surname: String): Result<User> {
         logger.log(Level.INFO, "Registering new user")
         val user = User(id, name, surname)
-        getUser(id).onSuccess { throw UserAlreadyExists() }
-        return userModel.addNewUser(user).onSuccess {
-            Result.success(user)
-        }.onFailure {
-            Result.failure<User>(it)
-        }
+        return getUser(id).fold(
+            onFailure = {
+                userModel.addNewUser(user).onSuccess {
+                    Result.success(user)
+                }.onFailure {
+                    Result.failure<User>(it)
+                }
+            },
+            onSuccess = {
+                Result.failure(UserAlreadyExists())
+            }
+        )
     }
 
-    override fun getUser(id: String): Result<User> {
-        TODO("Not yet implemented")
-    }
+    override fun getUser(id: String): Result<User> = userModel.getUser(id)
 }
 
 fun UserService(userModel: UserModel) = UserServiceImpl(userModel)

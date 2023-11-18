@@ -1,6 +1,7 @@
 package infrastructure.web.handlers
 
 import application.UserService
+import application.exceptions.UserAlreadyExists
 import infrastructure.web.sendReply
 import io.vertx.core.json.JsonObject
 import io.vertx.ext.web.RoutingContext
@@ -29,7 +30,10 @@ class UserHandlerImpl(override val userService: UserService) : UserHandler {
                     }
                 }
             }?.fold(onSuccess = { context.sendReply(JsonObject().put("result", "ok")) },
-                onFailure = { context.sendReply(JsonObject().put("result", "user-id-already-existing")) })
+                onFailure = { exception ->  when(exception) {
+                    UserAlreadyExists() -> context.sendReply(JsonObject().put("result", "user-id-already-existing"))
+                    else -> context.sendReply(JsonObject().put("result", "error-saving-user"))
+                } })
                 ?: context.sendReply(JsonObject().put("result", "ERROR: some-fields-were-null"))
         }
     }

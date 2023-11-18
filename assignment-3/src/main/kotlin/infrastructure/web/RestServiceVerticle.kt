@@ -36,10 +36,9 @@ class RestServiceVerticleImpl(
         val server = vertx.createHttpServer()
         val router = Router.router(vertx)
 
-        router.route("/static/*").handler(StaticHandler.create().setCachingEnabled(false))
-        router.route().handler(BodyHandler.create())
         router.apply {
-
+            route("/static/*").handler(StaticHandler.create().setCachingEnabled(false))
+            route().handler(BodyHandler.create())
 
             route(HttpMethod.POST, "/api/users").handler(userHandler::registerNewUser)
             route(HttpMethod.GET, "/api/users/:userId").handler(userHandler::getUser)

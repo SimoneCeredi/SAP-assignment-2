@@ -1,22 +1,37 @@
 package application
 
+import application.exceptions.EScooterAlreadyExists
 import domain.EScooter
+import domain.model.EScooterModel
+import java.util.logging.Level
 import java.util.logging.Logger
 
 interface EScooterService {
-    fun addEScooter(id: String)
-    fun getEScooter(id: String): Result<EScooter>
+    val escooterModel: EScooterModel
+    fun registerNewEScooter(id: String): Result<EScooter>
+    fun getEscooter(id: String): Result<EScooter>
 }
 
-class EScooterServiceImpl : EScooterService {
+class EScooterServiceImpl(override val escooterModel: EScooterModel) : EScooterService {
     val logger = Logger.getLogger("[EScooterService]")
-    override fun addEScooter(id: String) {
-        TODO("Not yet implemented")
+    override fun registerNewEScooter(id: String): Result<EScooter> {
+        logger.log(Level.INFO, "Registering new escooter")
+        val escooter = EScooter(id)
+        return getEscooter(id).fold(
+            onFailure = {
+                escooterModel.addNewEscooter(escooter).onSuccess {
+                    Result.success(escooter)
+                }.onFailure {
+                    Result.failure<EScooter>(it)
+                }
+            },
+            onSuccess = {
+                Result.failure(EScooterAlreadyExists())
+            }
+        )
     }
 
-    override fun getEScooter(id: String): Result<EScooter> {
-        TODO("Not yet implemented")
-    }
+    override fun getEscooter(id: String): Result<EScooter> = escooterModel.getEscooter(id)
 }
 
-fun EScooterService() = EScooterServiceImpl()
+fun EScooterService(escooterModel: EScooterModel) = EScooterServiceImpl(escooterModel)

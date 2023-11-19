@@ -10,18 +10,18 @@ interface UserFileSystemAdapter : UserDatabaseAdapter {
 }
 
 class UserFileSystemAdapterImpl(override val fileSystemAdapter: FileSystemAdapter) : UserFileSystemAdapter {
-    private val usersPath = "users"
+    private val path = "users"
     private val logger = Logger.getLogger("[UserFileSystem]")
 
     init {
-        fileSystemAdapter.makeDir(usersPath)
+        fileSystemAdapter.makeDir(path)
     }
 
     override fun saveUser(user: User): Result<User> =
-        fileSystemAdapter.saveObj(usersPath, user.id, UserJsonifier(user).toJson()).mapCatching { user }
+        fileSystemAdapter.saveObj(path, user.id, UserJsonifier(user).toJson()).mapCatching { user }
 
 
-    override fun getUser(userId: String): Result<User> = fileSystemAdapter.getObj(usersPath, userId).mapCatching {
+    override fun getUser(userId: String): Result<User> = fileSystemAdapter.getObj(path, userId).mapCatching {
         User(it.getString("id"), it.getString("name"), it.getString("surname"))
     }
 }

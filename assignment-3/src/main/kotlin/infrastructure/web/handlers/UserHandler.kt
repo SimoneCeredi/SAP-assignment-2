@@ -32,7 +32,7 @@ class UserHandlerImpl(override val userService: UserService) : UserHandler {
                 }
             }?.fold(onSuccess = { context.sendReply(JsonObject().put("result", "ok")) }, onFailure = { exception ->
                 when (exception) {
-                    UserAlreadyExists() -> context.sendReply(JsonObject().put("result", "user-id-already-existing"))
+                    UserAlreadyExists() -> context.sendReply(JsonObject().put("result", "user-id-already-exists"))
                     else -> context.sendReply(JsonObject().put("result", "error-saving-user"))
                 }
             })
@@ -50,7 +50,9 @@ class UserHandlerImpl(override val userService: UserService) : UserHandler {
                 context.sendReply(
                     JsonObject().put("result", "ok").put("user", UserJsonifier(user).toJson())
                 )
-            }?.onFailure { context.sendReply(JsonObject().put("result", "user-not-found")) } ?: context.sendReply(
+            }?.onFailure {
+                context.sendReply(JsonObject().put("result", "user-not-found"))
+            } ?: context.sendReply(
                 JsonObject().put("result", "ERROR: some-fields-were-null")
             )
         }

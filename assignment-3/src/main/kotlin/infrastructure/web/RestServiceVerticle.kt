@@ -42,6 +42,8 @@ class RestServiceVerticleImpl(
 
             route(HttpMethod.POST, "/api/users").handler(userHandler::registerNewUser)
             route(HttpMethod.GET, "/api/users/:userId").handler(userHandler::getUser)
+            route(HttpMethod.POST, "/api/escooters").handler(eScooterHandler::registerNewEscooter)
+            route(HttpMethod.GET, "/api/escooters/:escooterId").handler(eScooterHandler::getEscooter)
             // TODO: Implement other routes
         }
 

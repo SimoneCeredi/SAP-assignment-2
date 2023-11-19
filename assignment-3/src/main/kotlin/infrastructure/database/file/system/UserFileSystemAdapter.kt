@@ -1,14 +1,12 @@
 package infrastructure.database.file.system
 
 import domain.User
+import infrastructure.database.UserDatabaseAdapter
 import infrastructure.database.file.system.jsonifier.UserJsonifier
 import java.util.logging.Logger
 
-interface UserFileSystemAdapter {
+interface UserFileSystemAdapter : UserDatabaseAdapter {
     val fileSystemAdapter: FileSystemAdapter
-
-    fun saveUser(user: User): Result<User>
-    fun getUser(userId: String): Result<User>
 }
 
 class UserFileSystemAdapterImpl(override val fileSystemAdapter: FileSystemAdapter) : UserFileSystemAdapter {

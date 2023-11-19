@@ -41,9 +41,9 @@ class UserHandlerImpl(override val userService: UserService) : UserHandler {
 
     override fun getUser(context: RoutingContext) {
         logger.log(Level.INFO, "Get user request")
-        context.body().asJsonObject().apply {
-            logger.log(Level.INFO, encodePrettily())
-            val _id: String? = getString("id")
+        context.apply {
+            logger.log(Level.INFO, currentRoute().path)
+            val _id: String? = pathParam("userId")
             _id?.let {
                 userService.getUser(it)
             }?.onSuccess { user ->

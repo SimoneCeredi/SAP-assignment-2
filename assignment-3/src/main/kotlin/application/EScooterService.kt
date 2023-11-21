@@ -13,7 +13,7 @@ interface EScooterService {
 }
 
 class EScooterServiceImpl(override val escooterModel: EScooterModel) : EScooterService {
-    val logger = Logger.getLogger("[EScooterService]")
+    private val logger: Logger = Logger.getLogger("[EScooterService]")
     override fun registerNewEScooter(id: String): Result<EScooter> {
         logger.log(Level.INFO, "Registering new escooter")
         val escooter = EScooter(id)

@@ -1,5 +1,6 @@
-package domain
+package domain.model
 
+import domain.User
 import infrastructure.database.UserDatabaseAdapter
 
 interface UserModel {

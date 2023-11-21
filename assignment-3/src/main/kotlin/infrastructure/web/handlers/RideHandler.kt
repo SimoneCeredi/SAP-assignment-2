@@ -9,7 +9,7 @@ interface RideHandler {
 
 class RideHandlerImpl(override val rideService: RideService) : RideHandler {
 
-    val logger = Logger.getLogger("[RideHandler]")
+    val logger: Logger = Logger.getLogger("[RideHandler]")
 }
 
 fun RideHandler(rideService: RideService) = RideHandlerImpl(rideService)

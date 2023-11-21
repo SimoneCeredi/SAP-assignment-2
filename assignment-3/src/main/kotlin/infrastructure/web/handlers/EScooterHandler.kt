@@ -18,7 +18,7 @@ interface EScooterHandler {
 
 class EScooterHandlerImpl(override val escooterService: EScooterService) : EScooterHandler {
 
-    val logger = Logger.getLogger("[EScooterHandler]")
+    private val logger: Logger = Logger.getLogger("[EScooterHandler]")
     override fun registerNewEscooter(context: RoutingContext) {
         logger.log(Level.INFO, "New escooter registration request")
         context.body().asJsonObject()?.apply {

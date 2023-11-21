@@ -10,7 +10,7 @@ interface RideService {
 
 class RideServiceImpl : RideService {
 
-    val logger = Logger.getLogger("[RideService]")
+    val logger: Logger = Logger.getLogger("[RideService]")
     override fun addRide(userId: String, escooterId: String) {
         TODO("Not yet implemented")
     }

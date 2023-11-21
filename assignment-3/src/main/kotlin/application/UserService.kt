@@ -2,7 +2,7 @@ package application
 
 import application.exceptions.UserAlreadyExists
 import domain.User
-import domain.UserModel
+import domain.model.UserModel
 import java.util.logging.Level
 import java.util.logging.Logger
 
@@ -13,7 +13,7 @@ interface UserService {
 }
 
 class UserServiceImpl(override val userModel: UserModel) : UserService {
-    val logger = Logger.getLogger("[UserService]")
+    val logger: Logger = Logger.getLogger("[UserService]")
 
     override fun registerNewUser(id: String, name: String, surname: String): Result<User> {
         logger.log(Level.INFO, "Registering new user")

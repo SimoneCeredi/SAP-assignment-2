@@ -16,7 +16,7 @@ interface UserHandler {
 }
 
 class UserHandlerImpl(override val userService: UserService) : UserHandler {
-    val logger = Logger.getLogger("[UserHandler]")
+    val logger: Logger = Logger.getLogger("[UserHandler]")
     override fun registerNewUser(context: RoutingContext) {
         logger.log(Level.INFO, "New user registration request")
         context.body().asJsonObject()?.apply {

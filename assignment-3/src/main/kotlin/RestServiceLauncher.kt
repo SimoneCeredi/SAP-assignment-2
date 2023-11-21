@@ -1,7 +1,7 @@
 import application.EScooterService
 import application.RideService
 import application.UserService
-import domain.UserModel
+import domain.model.UserModel
 import domain.model.EScooterModel
 import infrastructure.database.file.system.EScooterFileSystemAdapter
 import infrastructure.database.file.system.FileSystemAdapter

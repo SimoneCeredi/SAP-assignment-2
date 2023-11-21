@@ -9,7 +9,7 @@ class UserJsonifier(val user: User) {
     fun toJson(): JsonObject = JsonObject().put("id", user.id).put("name", user.name).put("surname", user.surname)
 }
 
-class EScooterJsonifier(val eScooter: EScooter) {
+class EScooterJsonifier(private val eScooter: EScooter) {
     fun toJson(): JsonObject = JsonObject().put("id", eScooter.id)
 }
 

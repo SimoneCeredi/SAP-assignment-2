@@ -21,7 +21,7 @@ class UserServiceImpl(override val userModel: UserModel) : UserService {
         return getUser(id).fold(
             onFailure = {
                 userModel.addNewUser(user).onSuccess {
-                    Result.success(user)
+                    Result.success(it)
                 }.onFailure {
                     Result.failure<User>(it)
                 }

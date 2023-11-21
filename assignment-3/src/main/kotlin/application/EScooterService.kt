@@ -20,7 +20,7 @@ class EScooterServiceImpl(override val escooterModel: EScooterModel) : EScooterS
         return getEscooter(id).fold(
             onFailure = {
                 escooterModel.addNewEscooter(escooter).onSuccess {
-                    Result.success(escooter)
+                    Result.success(it)
                 }.onFailure {
                     Result.failure<EScooter>(it)
                 }

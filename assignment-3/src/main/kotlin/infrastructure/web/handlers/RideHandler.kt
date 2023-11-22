@@ -56,7 +56,21 @@ class RideHandlerImpl(override val rideService: RideService) : RideHandler {
     }
 
     override fun endRide(context: RoutingContext) {
-        TODO("Not yet implemented")
+        logger.log(Level.INFO, "End ride request")
+        context.apply {
+            logger.log(Level.INFO, currentRoute().path)
+            val _id: String? = pathParam("rideId")
+            _id?.let {
+                rideService.endRide(it)
+            }?.onSuccess {
+                context.sendReply(JsonObject().put("result", "ok"))
+            }?.onFailure {
+                context.sendReply(JsonObject().put("result", "ride-not-found"))
+            }
+                ?: context.sendReply(
+                    JsonObject().put("result", "ERROR: some-fields-were-null")
+                )
+        }
     }
 }
 

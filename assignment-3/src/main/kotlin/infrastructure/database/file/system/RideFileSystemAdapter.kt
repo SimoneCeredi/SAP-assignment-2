@@ -33,11 +33,11 @@ class RideFileSystemAdapterImpl(override val fileSystemAdapter: FileSystemAdapte
             it.getString("userId"),
             it.getString("escooterId"),
             LocalDateTime.parse(it.getString("startDate"), DateTimeFormatter.ISO_LOCAL_DATE_TIME),
-            it.getString("endDate").let { endDate ->
-                if (endDate == "null") {
+            it.getString("endDate").let {
+                if (it == null || it == "null") {
                     null
                 } else {
-                    LocalDateTime.parse(endDate, DateTimeFormatter.ISO_LOCAL_DATE_TIME)
+                    LocalDateTime.parse(it, DateTimeFormatter.ISO_LOCAL_DATE_TIME)
                 }
             }
         )

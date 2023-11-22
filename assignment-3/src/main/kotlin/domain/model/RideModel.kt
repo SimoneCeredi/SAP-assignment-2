@@ -8,6 +8,7 @@ interface RideModel {
 
     fun addNewRide(ride: Ride): Result<Ride>
     fun getRide(id: String): Result<Ride>
+    fun endRide(ride: Ride): Result<Ride>
 }
 
 class RideModelImpl(override val databasePort: RideDatabaseAdapter) : RideModel {
@@ -15,6 +16,7 @@ class RideModelImpl(override val databasePort: RideDatabaseAdapter) : RideModel 
         databasePort.saveRide(ride.setId(databasePort.getNextRideId()))
 
     override fun getRide(id: String): Result<Ride> = databasePort.getRide(id)
+    override fun endRide(ride: Ride): Result<Ride> = databasePort.saveRide(ride)
 }
 
 fun RideModel(databasePort: RideDatabaseAdapter) = RideModelImpl(databasePort)

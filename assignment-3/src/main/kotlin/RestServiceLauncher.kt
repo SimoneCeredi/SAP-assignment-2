@@ -3,8 +3,10 @@ import application.RideService
 import application.UserService
 import domain.model.UserModel
 import domain.model.EScooterModel
+import domain.model.RideModel
 import infrastructure.database.file.system.EScooterFileSystemAdapter
 import infrastructure.database.file.system.FileSystemAdapter
+import infrastructure.database.file.system.RideFileSystemAdapter
 import infrastructure.database.file.system.UserFileSystemAdapter
 import infrastructure.web.RestService
 import infrastructure.web.handlers.EScooterHandler
@@ -19,7 +21,7 @@ class RestServiceLauncher {
 
     val userHandler = UserHandler(UserService(UserModel(UserFileSystemAdapter(fileSystemAdapter))))
     val escooterHandler = EScooterHandler(EScooterService(EScooterModel(EScooterFileSystemAdapter(fileSystemAdapter))))
-    val rideHandler = RideHandler(RideService())
+    val rideHandler = RideHandler(RideService(RideModel(RideFileSystemAdapter(fileSystemAdapter))))
     
     fun launch() = RestService(port, userHandler, escooterHandler, rideHandler).init()
 }

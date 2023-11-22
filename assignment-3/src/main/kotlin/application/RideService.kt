@@ -1,5 +1,6 @@
 package application
 
+import application.exceptions.RideAlreadyEnded
 import application.exceptions.RideNotFound
 import domain.Ride
 import domain.model.RideModel
@@ -45,8 +46,12 @@ class RideServiceImpl private constructor(
         logger.log(Level.INFO, "Ending ride with id $id")
         return getRide(id).fold(onFailure = { Result.failure(RideNotFound()) }, onSuccess = {
             logger.log(Level.INFO, "got the ride")
-            rideModel.endRide(it.end()).also {
-                rideDashboardPort?.notifyOngoingRidesChanged(rideModel.getOngoingRides())
+            if (it.isOngoing) {
+                rideModel.endRide(it.end()).also {
+                    rideDashboardPort?.notifyOngoingRidesChanged(rideModel.getOngoingRides())
+                }
+            } else {
+                Result.failure(RideAlreadyEnded())
             }
         }
 

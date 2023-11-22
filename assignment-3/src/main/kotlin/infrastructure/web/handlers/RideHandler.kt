@@ -1,6 +1,7 @@
 package infrastructure.web.handlers
 
 import application.RideService
+import application.exceptions.RideAlreadyEnded
 import infrastructure.database.file.system.jsonifier.RideJsonifier
 import infrastructure.web.sendReply
 import io.vertx.core.json.JsonObject
@@ -65,7 +66,13 @@ class RideHandlerImpl(override val rideService: RideService) : RideHandler {
             }?.onSuccess {
                 context.sendReply(JsonObject().put("result", "ok"))
             }?.onFailure {
-                context.sendReply(JsonObject().put("result", "ride-not-found"))
+                when (it) {
+                    RideAlreadyEnded() ->
+                        context.sendReply(JsonObject().put("result", "ride-already-ended"))
+
+                    else ->
+                        context.sendReply(JsonObject().put("result", "ride-not-found"))
+                }
             }
                 ?: context.sendReply(
                     JsonObject().put("result", "ERROR: some-fields-were-null")

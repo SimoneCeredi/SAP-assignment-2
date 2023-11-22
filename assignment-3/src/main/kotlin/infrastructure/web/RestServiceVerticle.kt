@@ -71,6 +71,7 @@ class RestServiceVerticleImpl(
                                 }
                             }
                         }
+                        notifyOngoingRidesChanged(rideHandler.rideService.rideModel.getOngoingRides())
                     } else {
                         logger.log(Level.INFO, "Monitoring observer rejected")
                     }

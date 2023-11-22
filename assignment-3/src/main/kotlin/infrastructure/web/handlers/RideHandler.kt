@@ -40,7 +40,7 @@ class RideHandlerImpl(override val rideService: RideService) : RideHandler {
         logger.log(Level.INFO, "Get ride request")
         context.apply {
             logger.log(Level.INFO, currentRoute().path)
-            val _id: String = pathParam("rideId")
+            val _id: String? = pathParam("rideId")
             _id?.let {
                 rideService.getRide(it)
             }?.onSuccess { ride ->

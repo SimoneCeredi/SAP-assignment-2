@@ -1,5 +1,7 @@
 package infrastructure.web
 
+import application.RideDashboardPort
+import domain.Ride
 import infrastructure.web.handlers.EScooterHandler
 import infrastructure.web.handlers.RideHandler
 import infrastructure.web.handlers.UserHandler
@@ -28,8 +30,13 @@ class RestServiceVerticleImpl(
     override val userHandler: UserHandler,
     override val eScooterHandler: EScooterHandler,
     override val rideHandler: RideHandler,
-) : RestServiceVerticle, AbstractVerticle() {
+) : RestServiceVerticle, AbstractVerticle(), RideDashboardPort {
+    init {
+        rideHandler.rideService.setRideDashboardPort(this)
+    }
+
     private val logger = Logger.getLogger("[RestService]")
+
 
     override fun start() {
         logger.log(Level.INFO, "Service initializing...")
@@ -47,10 +54,29 @@ class RestServiceVerticleImpl(
             route(HttpMethod.POST, "/api/rides").handler(rideHandler::startNewRide)
             route(HttpMethod.GET, "/api/rides/:rideId").handler(rideHandler::getRide)
             route(HttpMethod.POST, "/api/rides/:rideId/end").handler(rideHandler::endRide)
-            // TODO: Implement other routes
         }
 
         server.apply {
+            webSocketHandler { event ->
+                event?.let { webSocket ->
+                    logger.log(Level.INFO, webSocket.path())
+                    if (webSocket.path() == "/api/rides/monitoring") {
+                        webSocket.accept()
+                        logger.log(Level.INFO, "New ride monitoring observer registered")
+                        vertx.eventBus().consumer("ride-events") { msg ->
+                            msg.body()?.let { body ->
+                                JsonObject(body.toString()).let { jsonObject ->
+                                    logger.log(Level.INFO, "Changes in rides: ${jsonObject.encodePrettily()}")
+                                    event.writeTextMessage(jsonObject.encodePrettily())
+                                }
+                            }
+                        }
+                    } else {
+                        logger.log(Level.INFO, "Monitoring observer rejected")
+                    }
+                }
+            }
+
             requestHandler(router)
             listen(port)
         }
@@ -66,6 +92,16 @@ class RestServiceVerticleImpl(
     }
 
     private fun createWebPageLink(name: String) = "http://localhost:$port/static/${name}.html"
+
+    override fun notifyOngoingRidesChanged(ongoingRides: Sequence<Ride>) {
+        logger?.log(Level.INFO, "notify num rides changed")
+        vertx.eventBus().apply {
+            publish(
+                "ride-events",
+                JsonObject().put("event", "num-ongoing-rides-changed").put("nOngoingRides", ongoingRides.count())
+            )
+        }
+    }
 
 }
 

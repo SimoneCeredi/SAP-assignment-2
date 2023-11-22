@@ -4,6 +4,7 @@ import application.exceptions.RideIdIsNull
 import domain.Ride
 import infrastructure.database.RideDatabaseAdapter
 import infrastructure.database.file.system.jsonifier.RideJsonifier
+import io.vertx.core.json.JsonObject
 import java.io.File
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
@@ -22,25 +23,12 @@ class RideFileSystemAdapterImpl(override val fileSystemAdapter: FileSystemAdapte
         fileSystemAdapter.makeDir(path)
     }
 
-    override fun saveRide(ride: Ride): Result<Ride> =
-        ride.id?.let {
-            fileSystemAdapter.saveObj(path, ride.id!!, RideJsonifier(ride).toJson()).mapCatching { ride }
-        } ?: Result.failure(RideIdIsNull())
+    override fun saveRide(ride: Ride): Result<Ride> = ride.id?.let {
+        fileSystemAdapter.saveObj(path, ride.id!!, RideJsonifier(ride).toJson()).mapCatching { ride }
+    } ?: Result.failure(RideIdIsNull())
 
     override fun getRide(rideId: String): Result<Ride> = fileSystemAdapter.getObj(path, rideId).mapCatching {
-        Ride(
-            it.getString("id"),
-            it.getString("userId"),
-            it.getString("escooterId"),
-            LocalDateTime.parse(it.getString("startDate"), DateTimeFormatter.ISO_LOCAL_DATE_TIME),
-            it.getString("endDate").let {
-                if (it == null || it == "null") {
-                    null
-                } else {
-                    LocalDateTime.parse(it, DateTimeFormatter.ISO_LOCAL_DATE_TIME)
-                }
-            }
-        )
+        extractRide(it)
     }
 
     override fun getNextRideId(): String {
@@ -53,6 +41,26 @@ class RideFileSystemAdapterImpl(override val fileSystemAdapter: FileSystemAdapte
         logger.log(Level.INFO, ret)
         return ret
     }
+
+    override fun getAllRides(): Sequence<Ride> =
+        File("${fileSystemAdapter.dbFolder}${File.separator}$path").listFiles()?.let { files ->
+            files.map { file ->
+                file.bufferedReader().use { reader -> JsonObject(reader.readText()) }.let { extractRide(it) }
+            }
+        }?.asSequence() ?: emptySequence()
+
+
+    private fun extractRide(jsonObject: JsonObject): Ride = Ride(jsonObject.getString("id"),
+        jsonObject.getString("userId"),
+        jsonObject.getString("escooterId"),
+        LocalDateTime.parse(jsonObject.getString("startDate"), DateTimeFormatter.ISO_LOCAL_DATE_TIME),
+        jsonObject.getString("endDate").let {
+            if (it == null || it == "null") {
+                null
+            } else {
+                LocalDateTime.parse(it, DateTimeFormatter.ISO_LOCAL_DATE_TIME)
+            }
+        })
 
 }
 

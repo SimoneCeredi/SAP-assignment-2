@@ -1,9 +1,9 @@
 package domain
 
 import java.time.LocalDateTime
-import java.util.*
 
 interface Ride {
+    val isOngoing: Boolean
     val id: String?
     val userId: String
     val escooterId: String
@@ -21,12 +21,17 @@ class RideImpl private constructor(
     override val startDate: LocalDateTime,
     override val endDate: LocalDateTime?,
 ) : Ride {
+    override val isOngoing: Boolean
+        get() = endDate == null
+
     override fun setId(id: String) = Ride(id, userId, escooterId, startDate, endDate)
     override fun end(): Ride = Ride(id!!, userId, escooterId, startDate, LocalDateTime.now())
 
     companion object {
         fun new(userId: String, escooterId: String) = new(null, userId, escooterId)
-        private fun new(id: String?, userId: String, escooterId: String) = new(id, userId, escooterId, LocalDateTime.now(), null)
+        private fun new(id: String?, userId: String, escooterId: String) =
+            new(id, userId, escooterId, LocalDateTime.now(), null)
+
         fun new(id: String?, userId: String, escooterId: String, startDate: LocalDateTime, endDate: LocalDateTime?) =
             RideImpl(id, userId, escooterId, startDate, endDate)
     }

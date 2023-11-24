@@ -1,0 +1,25 @@
+version: '3.9'
+services:
+  mongodb:
+    image: mongo
+    container_name: escooter-mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./data/db:/data/db  
+
+  gradle-app:
+    build:
+      context: assignment-3
+      dockerfile: Dockerfile  
+    container_name: escooter-monolithic-server
+    depends_on:
+      - mongodb
+    volumes:
+      - ./assignment-3:/app  
+    command: ./gradlew run  
+    ports:
+      - "8080:8080"  
+    environment:
+      MONGODB_URI: "mongodb://mongodb:27017/your-database-name"  
+

@@ -23,3 +23,5 @@ EXPOSE 8080
 # Command to run the application
 CMD ["./gradlew", "run"]
 
+HEALTHCHECK --interval=60s --retries=5 CMD curl --fail http://localhost:8080/static/user-registration.html || exit 1
+

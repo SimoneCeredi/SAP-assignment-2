@@ -20,10 +20,9 @@ class EScooterMongoRepositoryImpl(override val collection: MongoCollection<EScoo
     )
 
     override fun saveEScooter(escooter: EScooter): Result<EScooter> = runBlocking {
-        if (collection.insertOne(escooter).wasAcknowledged()) {
-            Result.success(escooter)
-        } else {
-            Result.failure(EScooterAlreadyExists())
+        runCatching {
+            collection.insertOne(escooter)
+            escooter
         }
     }
 

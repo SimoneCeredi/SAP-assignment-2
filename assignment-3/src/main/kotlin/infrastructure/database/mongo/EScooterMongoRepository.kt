@@ -29,9 +29,7 @@ class EScooterMongoRepositoryImpl(override val collection: MongoCollection<EScoo
 
 
     override fun getEScooter(escooterId: String): Result<EScooter> = runBlocking {
-        println("Getting escooter $escooterId")
         collection.find(eq(EScooter::id.name, escooterId)).projection(escooterProjectionFields).firstOrNull()?.let {
-            println("got ${it.id}")
             Result.success(it)
         } ?: Result.failure(EScooterNotFound())
     }

@@ -1,6 +1,5 @@
 package infrastructure.database.mongo
 
-import application.exceptions.UserAlreadyExists
 import application.exceptions.UserNotFound
 import com.mongodb.client.model.Filters.eq
 import com.mongodb.client.model.Projections
@@ -22,10 +21,9 @@ class UserMongoRepositoryImpl(override val collection: MongoCollection<User>) : 
     )
 
     override fun saveUser(user: User): Result<User> = runBlocking {
-        if (collection.insertOne(user).wasAcknowledged()) {
-            Result.success(user)
-        } else {
-            Result.failure(UserAlreadyExists())
+        runCatching {
+            collection.insertOne(user)
+            user
         }
     }
 

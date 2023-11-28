@@ -15,7 +15,7 @@ interface EScooterMongoRepository : EScooterRepository {
 }
 
 class EScooterMongoRepositoryImpl(override val collection: MongoCollection<EScooter>) : EScooterMongoRepository {
-    private val escooterProjectionFields = Projections.fields(
+    private val projectionFields = Projections.fields(
         Projections.include(EScooter::id.name), Projections.excludeId()
     )
 
@@ -29,7 +29,7 @@ class EScooterMongoRepositoryImpl(override val collection: MongoCollection<EScoo
 
 
     override fun getEScooter(escooterId: String): Result<EScooter> = runBlocking {
-        collection.find(eq(EScooter::id.name, escooterId)).projection(escooterProjectionFields).firstOrNull()?.let {
+        collection.find(eq(EScooter::id.name, escooterId)).projection(projectionFields).firstOrNull()?.let {
             Result.success(it)
         } ?: Result.failure(EScooterNotFound())
     }

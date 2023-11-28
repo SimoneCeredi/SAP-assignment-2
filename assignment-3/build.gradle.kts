@@ -14,7 +14,7 @@ dependencies {
     testImplementation(kotlin("test"))
     implementation("io.vertx:vertx-core:4.4.6")
     implementation("io.vertx:vertx-web:4.4.6")
-    implementation("io.vertx:vertx-lang-kotlin:4.4.6")
+    implementation("org.mongodb:mongodb-driver-kotlin-coroutine:4.11.0")
 }
 
 tasks.test {

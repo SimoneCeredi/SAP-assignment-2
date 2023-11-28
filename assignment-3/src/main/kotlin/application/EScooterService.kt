@@ -19,6 +19,7 @@ class EScooterServiceImpl(override val escooterModel: EScooterModel) : EScooterS
         val escooter = EScooter(id)
         return getEscooter(id).fold(
             onFailure = {
+                logger.log(Level.INFO, "escooter does not already exist registering a new one")
                 escooterModel.addNewEscooter(escooter).onSuccess {
                     Result.success(it)
                 }.onFailure {

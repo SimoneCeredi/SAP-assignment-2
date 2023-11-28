@@ -1,10 +1,10 @@
 package domain.model
 
 import domain.Ride
-import infrastructure.database.RideDatabaseAdapter
+import infrastructure.database.RideRepository
 
 interface RideModel {
-    val databasePort: RideDatabaseAdapter
+    val databasePort: RideRepository
 
     fun addNewRide(ride: Ride): Result<Ride>
     fun getRide(id: String): Result<Ride>
@@ -12,7 +12,7 @@ interface RideModel {
     fun getOngoingRides(): Sequence<Ride>
 }
 
-class RideModelImpl(override val databasePort: RideDatabaseAdapter) : RideModel {
+class RideModelImpl(override val databasePort: RideRepository) : RideModel {
     override fun addNewRide(ride: Ride): Result<Ride> = databasePort.saveRide(ride.setId(databasePort.getNextRideId()))
 
     override fun getRide(id: String): Result<Ride> = databasePort.getRide(id)
@@ -20,4 +20,4 @@ class RideModelImpl(override val databasePort: RideDatabaseAdapter) : RideModel 
     override fun getOngoingRides(): Sequence<Ride> = databasePort.getAllRides().filter { it.isOngoing }
 }
 
-fun RideModel(databasePort: RideDatabaseAdapter) = RideModelImpl(databasePort)
+fun RideModel(databasePort: RideRepository) = RideModelImpl(databasePort)

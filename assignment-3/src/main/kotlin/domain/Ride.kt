@@ -1,5 +1,6 @@
 package domain
 
+import org.bson.codecs.pojo.annotations.BsonId
 import java.time.LocalDateTime
 
 interface Ride {
@@ -14,8 +15,8 @@ interface Ride {
     fun end(): Ride
 }
 
-class RideImpl private constructor(
-    override val id: String?,
+data class RideImpl(
+    @BsonId override val id: String?,
     override val userId: String,
     override val escooterId: String,
     override val startDate: LocalDateTime,

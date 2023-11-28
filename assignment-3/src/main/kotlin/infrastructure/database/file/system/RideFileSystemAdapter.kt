@@ -2,7 +2,7 @@ package infrastructure.database.file.system
 
 import application.exceptions.RideIdIsNull
 import domain.Ride
-import infrastructure.database.RideDatabaseAdapter
+import infrastructure.database.RideRepository
 import infrastructure.database.file.system.jsonifier.RideJsonifier
 import io.vertx.core.json.JsonObject
 import java.io.File
@@ -11,7 +11,7 @@ import java.time.format.DateTimeFormatter
 import java.util.logging.Level
 import java.util.logging.Logger
 
-interface RideFileSystemAdapter : RideDatabaseAdapter {
+interface RideFileSystemAdapter : RideRepository {
     val fileSystemAdapter: FileSystemAdapter
 }
 

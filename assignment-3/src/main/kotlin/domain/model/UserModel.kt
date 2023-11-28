@@ -1,19 +1,19 @@
 package domain.model
 
 import domain.User
-import infrastructure.database.UserDatabaseAdapter
+import infrastructure.database.UserRepository
 
 interface UserModel {
-    val databasePort: UserDatabaseAdapter
+    val databasePort: UserRepository
 
     fun addNewUser(user: User): Result<User>
     fun getUser(id: String): Result<User>
 }
 
-class UserModelImpl(override val databasePort: UserDatabaseAdapter) : UserModel {
+class UserModelImpl(override val databasePort: UserRepository) : UserModel {
     override fun addNewUser(user: User): Result<User> = databasePort.saveUser(user)
 
     override fun getUser(id: String): Result<User> = databasePort.getUser(id)
 }
 
-fun UserModel(databasePort: UserDatabaseAdapter) = UserModelImpl(databasePort)
+fun UserModel(databasePort: UserRepository) = UserModelImpl(databasePort)

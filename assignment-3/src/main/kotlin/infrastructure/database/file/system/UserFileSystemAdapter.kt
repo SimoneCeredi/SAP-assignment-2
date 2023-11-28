@@ -1,11 +1,11 @@
 package infrastructure.database.file.system
 
 import domain.User
-import infrastructure.database.UserDatabaseAdapter
+import infrastructure.database.UserRepository
 import infrastructure.database.file.system.jsonifier.UserJsonifier
 import java.util.logging.Logger
 
-interface UserFileSystemAdapter : UserDatabaseAdapter {
+interface UserFileSystemAdapter : UserRepository {
     val fileSystemAdapter: FileSystemAdapter
 }
 

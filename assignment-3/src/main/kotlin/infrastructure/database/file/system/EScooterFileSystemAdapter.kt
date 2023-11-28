@@ -1,10 +1,10 @@
 package infrastructure.database.file.system
 
 import domain.EScooter
-import infrastructure.database.EScooterDatabaseAdapter
+import infrastructure.database.EScooterRepository
 import infrastructure.database.file.system.jsonifier.EScooterJsonifier
 
-interface EScooterFileSystemAdapter : EScooterDatabaseAdapter {
+interface EScooterFileSystemAdapter : EScooterRepository {
     val fileSystemAdapter: FileSystemAdapter
 }
 

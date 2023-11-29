@@ -49,6 +49,8 @@ class RideFileSystemAdapterImpl(override val fileSystemAdapter: FileSystemAdapte
             }
         }?.asSequence() ?: emptySequence()
 
+    override fun updateRide(ride: Ride): Result<Ride> = saveRide(ride)
+
 
     private fun extractRide(jsonObject: JsonObject): Ride = Ride(jsonObject.getString("id"),
         jsonObject.getString("userId"),

@@ -1,9 +1,8 @@
 package infrastructure.database.mongo
 
 import application.exceptions.RideNotFound
+import com.mongodb.client.model.*
 import com.mongodb.client.model.Filters.eq
-import com.mongodb.client.model.Projections
-import com.mongodb.client.model.Sorts
 import com.mongodb.kotlin.client.coroutine.MongoCollection
 import domain.MongoRide
 import domain.Ride
@@ -31,14 +30,7 @@ class RideMongoRepositoryImpl(override val collection: MongoCollection<MongoRide
     override fun saveRide(ride: Ride): Result<Ride> = runBlocking {
         runCatching {
             collection.insertOne(
-                MongoRide(
-                    ObjectId(),
-                    ride.id,
-                    ride.userId,
-                    ride.escooterId,
-                    ride.startDate,
-                    ride.endDate
-                )
+                ride.toMongoRide()
             )
             ride
         }
@@ -65,6 +57,25 @@ class RideMongoRepositoryImpl(override val collection: MongoCollection<MongoRide
     override fun getAllRides(): Sequence<Ride> = runBlocking {
         collection.find().toList().asSequence()
     }
+
+    override fun updateRide(ride: Ride): Result<Ride> = runBlocking {
+        runCatching {
+            println(ride.id)
+            val query = eq(Ride::id.name, ride.id)
+            val updates = Updates.combine(
+                Updates.set(Ride::id.name, ride.id),
+                Updates.set(Ride::userId.name, ride.userId),
+                Updates.set(Ride::escooterId.name, ride.escooterId),
+                Updates.set(Ride::startDate.name, ride.endDate),
+                Updates.set(Ride::endDate.name, ride.endDate)
+            )
+            val options = UpdateOptions().upsert(true)
+            collection.updateOne(query, updates, options)
+            ride
+        }
+    }
 }
+
+fun Ride.toMongoRide() = MongoRide(ObjectId(), id, userId, escooterId, startDate, endDate)
 
 fun RideMongoRepository(collection: MongoCollection<MongoRide>) = RideMongoRepositoryImpl(collection)

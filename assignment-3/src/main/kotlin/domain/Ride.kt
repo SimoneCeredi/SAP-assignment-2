@@ -1,6 +1,7 @@
 package domain
 
 import org.bson.codecs.pojo.annotations.BsonId
+import org.bson.types.ObjectId
 import java.time.LocalDateTime
 
 interface Ride {
@@ -15,8 +16,8 @@ interface Ride {
     fun end(): Ride
 }
 
-data class RideImpl(
-    @BsonId override val id: String?,
+open class RideImpl(
+    override val id: String?,
     override val userId: String,
     override val escooterId: String,
     override val startDate: LocalDateTime,
@@ -38,6 +39,14 @@ data class RideImpl(
     }
 }
 
+data class MongoRide(
+    @BsonId val objectId: ObjectId?,
+    override val id: String?, override val userId: String, override val escooterId: String,
+    override val startDate: LocalDateTime, override val endDate: LocalDateTime?
+) : RideImpl(id, userId, escooterId, startDate, endDate)
+
 fun Ride(userId: String, escooterId: String) = RideImpl.new(userId, escooterId)
 fun Ride(id: String, userId: String, escooterId: String, startDate: LocalDateTime, endDate: LocalDateTime?) =
     RideImpl.new(id, userId, escooterId, startDate, endDate)
+
+

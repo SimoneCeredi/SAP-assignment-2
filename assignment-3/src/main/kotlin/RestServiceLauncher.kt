@@ -4,14 +4,14 @@ import application.UserService
 import com.mongodb.ConnectionString
 import com.mongodb.MongoClientSettings
 import com.mongodb.kotlin.client.coroutine.MongoClient
-import domain.EScooter
-import domain.User
+import domain.*
 import domain.model.EScooterModel
 import domain.model.RideModel
 import domain.model.UserModel
 import infrastructure.database.file.system.FileSystemAdapter
 import infrastructure.database.file.system.RideFileSystemAdapter
 import infrastructure.database.mongo.EScooterMongoRepository
+import infrastructure.database.mongo.RideMongoRepository
 import infrastructure.database.mongo.UserMongoRepository
 import infrastructure.web.RestService
 import infrastructure.web.handlers.EScooterHandler
@@ -45,15 +45,17 @@ class RestServiceLauncher {
 //        val userHandler = UserHandler(UserService(UserModel(UserFileSystemAdapter(fileSystemAdapter))))
 //        val escooterHandler =
 //            EScooterHandler(EScooterService(EScooterModel(EScooterFileSystemAdapter(fileSystemAdapter))))
-        val rideHandler = RideHandler(RideService(RideModel(RideFileSystemAdapter(fileSystemAdapter))))
+//        val rideHandler = RideHandler(RideService(RideModel(RideFileSystemAdapter(fileSystemAdapter))))
 
         val client = MongoClient.create(settings)
         val db = client.getDatabase("escooter_service_db")
-        val users = db.getCollection<User>("users")
-        val escooters = db.getCollection<EScooter>("escooters")
+        val users = db.getCollection<MongoUser>("users")
+        val escooters = db.getCollection<MongoEScooter>("escooters")
+        val rides = db.getCollection<MongoRide>("rides")
 
         val escooterHandler = EScooterHandler(EScooterService(EScooterModel(EScooterMongoRepository(escooters))))
         val userHandler = UserHandler(UserService(UserModel(UserMongoRepository(users))))
+        val rideHandler = RideHandler(RideService(RideModel(RideMongoRepository(rides))))
 
         RestService(port, userHandler, escooterHandler, rideHandler).init()
 

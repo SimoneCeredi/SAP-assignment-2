@@ -6,22 +6,24 @@ import com.mongodb.client.model.Filters.eq
 import com.mongodb.client.model.Projections
 import com.mongodb.kotlin.client.coroutine.MongoCollection
 import domain.EScooter
+import domain.MongoEScooter
 import infrastructure.database.EScooterRepository
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.runBlocking
+import org.bson.types.ObjectId
 
 interface EScooterMongoRepository : EScooterRepository {
-    val collection: MongoCollection<EScooter>
+    val collection: MongoCollection<MongoEScooter>
 }
 
-class EScooterMongoRepositoryImpl(override val collection: MongoCollection<EScooter>) : EScooterMongoRepository {
+class EScooterMongoRepositoryImpl(override val collection: MongoCollection<MongoEScooter>) : EScooterMongoRepository {
     private val projectionFields = Projections.fields(
         Projections.include(EScooter::id.name), Projections.excludeId()
     )
 
     override fun saveEScooter(escooter: EScooter): Result<EScooter> = runBlocking {
         runCatching {
-            collection.insertOne(escooter)
+            collection.insertOne(MongoEScooter(ObjectId(), escooter.id))
             escooter
         }
     }
@@ -35,4 +37,4 @@ class EScooterMongoRepositoryImpl(override val collection: MongoCollection<EScoo
 
 }
 
-fun EScooterMongoRepository(collection: MongoCollection<EScooter>) = EScooterMongoRepositoryImpl(collection)
+fun EScooterMongoRepository(collection: MongoCollection<MongoEScooter>) = EScooterMongoRepositoryImpl(collection)

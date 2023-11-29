@@ -60,7 +60,6 @@ class RideMongoRepositoryImpl(override val collection: MongoCollection<MongoRide
 
     override fun updateRide(ride: Ride): Result<Ride> = runBlocking {
         runCatching {
-            println(ride.id)
             val query = eq(Ride::id.name, ride.id)
             val updates = Updates.combine(
                 Updates.set(Ride::id.name, ride.id),

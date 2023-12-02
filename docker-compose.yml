@@ -20,7 +20,6 @@ services:
       - mongodb
     volumes:
       - ./assignment-3:/app  
-    command: ./gradlew run  
     ports:
       - "8080:8080"  
     environment:
